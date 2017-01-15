@@ -4,6 +4,7 @@ const path = require('path')
 const co = require('co')
 const pify = require('promise.ify')
 const fs = pify.all(require('fs-extra'))
+const _ = require('lodash')
 const parser = require('./lib/parser.js')
 const LocalUtil = require('./lib/util.js')
 
@@ -39,9 +40,25 @@ module.exports = co.wrap(function*(filename) {
     stream.pipe(p)
   })
 
-  return yield new Promise(resolve => {
+  const info = yield new Promise(resolve => {
     p.on('readable', function() {
       resolve(p.read())
     })
   })
+
+  const ret = {}
+
+  let singer = _.find(info.ID3, ['id', 'TPE1'])
+  let title = _.find(info.ID3, ['id', 'TIT2'])
+  let album = _.find(info.ID3, ['id', 'TALB'])
+  singer = singer.content
+  title = title.content
+  album = album.content
+
+  return {
+    singer,
+    title,
+    album,
+    raw: info,
+  }
 })

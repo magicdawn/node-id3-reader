@@ -13,9 +13,21 @@ $ npm i id3-reader --save
 ```
 
 ## API
+
 ```js
-const id3Reader = require('id3-reader');
+const reader = require('id3-reader')
+
+reader(filename | fd).then(info => {
+  // blabla
+})
 ```
+
+### resolved info
+
+- `singer`: extracted from `TPE1`
+- `title`: extracted from `TIT2`
+- `album`: extracted from `TALB`
+- `raw`: the raw ID3 info
 
 ## Changelog
 [CHANGELOG.md](CHANGELOG.md)

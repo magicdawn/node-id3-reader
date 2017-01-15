@@ -37,5 +37,13 @@
     "lodash": "^4.17.4",
     "promise.ify": "^0.3.0",
     "stream-browserify": "^2.0.1"
-  }
+  },
+  "files": [
+    "lib",
+    "index.js",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ]
 }

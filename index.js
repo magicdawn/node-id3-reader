@@ -14,9 +14,12 @@ const FILE_TOO_SMALL = 'file too small'
  * get ID3 info
  */
 
-module.exports = co.wrap(function*(filename) {
-  filename = path.resolve(filename)
-  const fd = yield fs.openAsync(filename, 'r')
+module.exports = co.wrap(function*(fd) {
+  if (typeof fd !== 'number') {
+    const filename = path.resolve(fd)
+    fd = yield fs.openAsync(filename, 'r')
+  }
+
   const stat = yield fs.fstatAsync(fd)
   if (stat.size < 10) {
     throw new Error(FILE_TOO_SMALL)

@@ -1,4 +1,6 @@
 # id3-reader
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/magicdawn/node-id3-reader.svg)](https://greenkeeper.io/)
 > mp3 ID3 reader for Node.js
 
 [![Build Status](https://img.shields.io/travis/magicdawn/node-id3-reader.svg?style=flat-square)](https://travis-ci.org/magicdawn/node-id3-reader)
